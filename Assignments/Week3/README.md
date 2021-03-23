@@ -18,6 +18,15 @@ RGB[A] to Gray:Y←0.299⋅R+0.587⋅G+0.114⋅B
 
 
 
+
+![163955529_3723036091137265_8724301538447770420_n](https://user-images.githubusercontent.com/72682313/112089786-e5315b00-8bc4-11eb-9513-9b925116cfee.png)
+
+
+
+
+
+
+
 4.Compare Verilog and Python
 
 RGB Image
