@@ -1,5 +1,8 @@
 # **TỔNG QUAN**
   - ZFNet là một mạng nơ-ron tích tụ cổ điển. Thiết kế được thúc đẩy bằng cách hình dung (visualizing) các lớp tính năng trung gian và hoạt động của bộ phân loại. So với AlexNet, kích thước bộ lọc được giảm xuống và giảm độ lệch của các vòng xoắn(the stride of the convolutions).
+![image](https://user-images.githubusercontent.com/80802875/115350581-7b19cf00-a1df-11eb-96b6-934ea7df2c8c.png)
+
+ Giải thích: - kiến trúc của chập 8 lớp. Hình ảnh cắt 224 x 224 được làm đầu vào. Điều này được kết hợp với 96 bộ lọc lớp thứ nhất khác nhau (màu đỏ), mỗi bộ có kích thước 7 x 7, sử dụng sải chân là 2 ở cả x và y. Các bản đồ đặc trưng thu được sau đó: (i) được chuyển qua một hàm tuyến tính(ReLUs) được chỉnh lưu (không được hiển thị). (ii) gộp chung (tối đa trong vùng 3x3, sử dụng bước 2) và (iii) chuẩn hóa liên tục giữa các bản đồ đối tượng để tạo ra 96 bản đồ đối tượng có 55 x 55 khác nhau. Các thao tác tương tự được lặp lại ở các lớp 2,3,4,5. Hai lớp cuối cùng được kết nối đầy đủ, lấy các tính năng từ lớp chập trên cùng làm đầu vào ở dạng vectơ (kích thước 6x6x256 = 9216). Lớp cuối cùng là một hàm softmax C-way, C là số lớp. Tất cả các bộ lọc và bản đồ đối tượng đều có hình vuông
 
 # **GIỚI THIỆU THÀNH PHẦN**
 
@@ -17,7 +20,7 @@
 
 ## DROP OUT (Loại bỏ)
    - Drop out là một kỹ thuật chính quy hoá cho các mạng thần kinh làm rơi một đơn vị (cùng với các kết nối) tại thời điểm đào tạo với một xác suất được chỉ định ![image](https://user-images.githubusercontent.com/80802875/115281219-f5603a00-a172-11eb-8cbf-cda6dc8c0b15.png) (giá trị chung ![image](https://user-images.githubusercontent.com/80802875/115281348-19bc1680-a173-11eb-8e61-240ae5760f6a.png)). Tại thời điểm kiểm tra, tất cả các đơn vị đều có mặt, nhưng với trọng số(weights) được chia tỷ lệ bởi ![image](https://user-images.githubusercontent.com/80802875/115281519-4bcd7880-a173-11eb-855f-7f9562d6d632.png)(![image](https://user-images.githubusercontent.com/80802875/115281586-6142a280-a173-11eb-828b-df8384835143.png) trở thành ![image](https://user-images.githubusercontent.com/80802875/115281650-6ef82800-a173-11eb-9689-77313194e537.png) )
-   - Ý tưởng là để ngăn chặn sự đồng thích ứng, trong đó neural network trở nên quá phụ thuộc vào các kết nối cụ thể, vì điều này có thể là triệu chứng của việc trang bị quá mức. Về mặt trực giác, việc bỏ học có thể được coi là tạo ra một quần thể mạng thần kinh tiềm ẩn.
+   - Ý tưởng là để ngăn chặn sự đồng thích ứng, trong đó neural network trở nên quá phụ thuộc vào các kết nối cụ thể, vì điều này có thể là triệu chứng của việc trang bị quá mức. Về mặt trực giác, việc loại bỏ có thể được coi là tạo ra một quần thể mạng neural tiềm ẩn.
 ![image](https://user-images.githubusercontent.com/80802875/115282047-eaf27000-a173-11eb-9beb-0f163080102e.png)
 
 ## LOCAL CONSTRAST NORMALIZATION (Chuẩn hoá độ tương phản cục bộ)
