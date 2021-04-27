@@ -72,3 +72,4 @@ số sang vector cùng kích thước với output của model.
   - Ví dụ:
 
 ![image](https://user-images.githubusercontent.com/80802875/116173974-b95f4300-a737-11eb-86ee-8734534f880f.png)
+  - Đối với bài toán này, chúng là sẽ sử dụng hàm loss là categorical_crossentropy.
