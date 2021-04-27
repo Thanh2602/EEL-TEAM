@@ -54,7 +54,8 @@
 
 # **HIỆN THỰC KIẾN TRÚC ZFNET**
 ## XÂY DỰNG BÀI TOÁN
-  - Chúng ta có ảnh RGB kích thước 224x224x3 làm đầu vào và chúng ta muốn dự đoán hình này là gì.
+  - Input: Ảnh biển báo giao thông 224x224x3
+  - Output: Nhận biết đó là biển báo gì?
 ## CHUẨN BỊ DỮ LIỆU (Dataset)
   - Dataset sẽ được lấy ở thư viện keras.
   - Chia thành 3 tập dữ liệu: Training set, validation set, test set.
