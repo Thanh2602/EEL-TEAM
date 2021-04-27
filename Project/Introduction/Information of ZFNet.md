@@ -4,8 +4,6 @@
 
  Giải thích: - kiến trúc của chập 8 lớp. Hình ảnh cắt 224 x 224 được làm đầu vào. Điều này được kết hợp với 96 bộ lọc lớp thứ nhất khác nhau (màu đỏ), mỗi bộ có kích thước 7 x 7, sử dụng sải chân là 2 ở cả x và y. Các bản đồ đặc trưng thu được sau đó: (i) được chuyển qua một hàm tuyến tính(ReLUs) được chỉnh lưu (không được hiển thị). (ii) gộp chung (tối đa trong vùng 3x3, sử dụng bước 2) và (iii) chuẩn hóa liên tục giữa các bản đồ đối tượng để tạo ra 96 bản đồ đối tượng có 55 x 55 khác nhau. Các thao tác tương tự được lặp lại ở các lớp 2,3,4,5. Hai lớp cuối cùng được kết nối đầy đủ, lấy các tính năng từ lớp chập trên cùng làm đầu vào ở dạng vectơ (kích thước 6x6x256 = 9216). Lớp cuối cùng là một hàm softmax C-way, C là số lớp. Tất cả các bộ lọc và bản đồ đối tượng đều có hình vuông
 
-# **GIỚI THIỆU THÀNH PHẦN**
-
 ## CONVOLUTION (Tích Chập):
   - Phép chập là một loại phép toán ma trận, bao gồm một kernel, một ma trận nhỏ có trọng số, trượt qua dữ liệu đầu vào, thực hiện phép nhân khôn ngoan phần tử với phần đầu vào mà nó đang ở trên, sau đó tổng hợp các kết quả thành một đầu ra.
   - Về mặt trực quan, một phép tích chập cho phép chia sẻ trọng số - giảm số lượng các tham số hiệu quả - và dịch hình ảnh (cho phép phát hiện cùng một tính năng trong các phần khác nhau của không gian đầu vào).
