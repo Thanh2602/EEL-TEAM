@@ -1,4 +1,14 @@
 # **TỔNG QUAN**
+## GIỚI THIỆU MẠNG CNN:
+  - Trong mạng neural, mô hình mạng neural tích chập (CNN) là 1 trong những mô hình để nhận dạng và phân loại hình ảnh. Trong đó, xác định đối tượng và nhận dạng khuôn mặt là 1 trong số những lĩnh vực mà CNN được sử dụng rộng rãi.
+  - CNN phân loại hình ảnh bằng cách lấy 1 hình ảnh đầu vào, xử lý và phân loại nó theo các hạng mục nhất định (Ví dụ: Chó, Mèo, Hổ, ...). Máy tính coi hình ảnh đầu vào là 1 mảng pixel và nó phụ thuộc vào độ phân giải của hình ảnh. Dựa trên độ phân giải hình ảnh, máy tính sẽ thấy H x W x D.
+
+![image](https://user-images.githubusercontent.com/80802875/116171809-b1050900-a733-11eb-9276-22a064b6f833.png)
+  - Về kỹ thuật, mô hình CNN để training và kiểm tra, mỗi hình ảnh đầu vào sẽ chuyển nó qua 1 loạt các lớp tích chập với các bộ lọc (Kernals), tổng hợp lại các lớp được kết nối đầy đủ (Full Connected) và áp dụng hàm Softmax để phân loại đối tượng có giá trị xác suất giữa 0 và 1.
+
+![image](https://user-images.githubusercontent.com/80802875/116171908-e90c4c00-a733-11eb-8e83-c518afe7ddc4.png)
+
+## GIỚI THIỆU KIẾN TRÚC MẠNG ZFNET:
   - ZFNet là một mạng nơ-ron tích tụ cổ điển. Thiết kế được thúc đẩy bằng cách hình dung (visualizing) các lớp tính năng trung gian và hoạt động của bộ phân loại. So với AlexNet, kích thước bộ lọc được giảm xuống và giảm độ lệch của các vòng xoắn(the stride of the convolutions).
 ![image](https://user-images.githubusercontent.com/80802875/115350581-7b19cf00-a1df-11eb-96b6-934ea7df2c8c.png)
 
@@ -19,6 +29,7 @@
 ## DROP OUT (Loại bỏ)
    - Drop out là một kỹ thuật chính quy hoá cho các mạng thần kinh làm rơi một đơn vị (cùng với các kết nối) tại thời điểm đào tạo với một xác suất được chỉ định ![image](https://user-images.githubusercontent.com/80802875/115281219-f5603a00-a172-11eb-8cbf-cda6dc8c0b15.png) (giá trị chung ![image](https://user-images.githubusercontent.com/80802875/115281348-19bc1680-a173-11eb-8e61-240ae5760f6a.png)). Tại thời điểm kiểm tra, tất cả các đơn vị đều có mặt, nhưng với trọng số(weights) được chia tỷ lệ bởi ![image](https://user-images.githubusercontent.com/80802875/115281519-4bcd7880-a173-11eb-855f-7f9562d6d632.png)(![image](https://user-images.githubusercontent.com/80802875/115281586-6142a280-a173-11eb-828b-df8384835143.png) trở thành ![image](https://user-images.githubusercontent.com/80802875/115281650-6ef82800-a173-11eb-9689-77313194e537.png) )
    - Ý tưởng là để ngăn chặn sự đồng thích ứng, trong đó neural network trở nên quá phụ thuộc vào các kết nối cụ thể, vì điều này có thể là triệu chứng của việc trang bị quá mức. Về mặt trực giác, việc loại bỏ có thể được coi là tạo ra một quần thể mạng neural tiềm ẩn.
+
 ![image](https://user-images.githubusercontent.com/80802875/115282047-eaf27000-a173-11eb-9beb-0f163080102e.png)
 
 ## LOCAL CONSTRAST NORMALIZATION (Chuẩn hoá độ tương phản cục bộ)
@@ -27,10 +38,12 @@
 
 ## MAX POOLING
    - Max pooling là một hoạt động tổng hợp tính toán giá trị tối đa cho các bản vá lỗi của bản đồ đối tượng (feature map) và sử dụng nó để tạo bản đồ đối tượng địa lý được lấy mẫu xuống(tổng hợp). Nó thường được sử dụng sau một lớp phức hợp. Nó bổ sung một lượng nhỏ bất biến dịch - nghĩa là dịch hình ảnh theo một lượng nhỏ không ảnh hưởng đáng kể đến giá trị của hầu hết các đầu ra được gộp chung.
+
 ![image](https://user-images.githubusercontent.com/80802875/115283418-86d0ab80-a175-11eb-8c01-a29ecd80d16b.png)
 
 ## RECTIFIED LINEAR UNITS (ReLUs)
    - ReLUs, là một loại hàm kích hoạt tuyến tính theo chiều dương, nhưng bằng không trong chiều âm. Đường gấp khúc trong hàm là nguồn gốc của sự không tuyến tính. Độ tuyến tính trong chiều dương có đặc tính hấp dẫn là nó ngăn cản sự không bão hòa của gradient (tương phản với kích hoạt sigmoid (constract with sigmoid activations)), mặc dù đối với một nửa đường thực, gradient của nó bằng 0.
+
 ![image](https://user-images.githubusercontent.com/80802875/115283683-e4fd8e80-a175-11eb-81f9-c75582135ae7.png)
 
 ## SOFTMAX 
